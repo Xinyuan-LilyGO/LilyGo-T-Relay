@@ -35,6 +35,7 @@ Configure GP21, GP19, GP18, and GP5 in sequence.
 7. Upload routines (note the configuration of wifi and Auth tokens).Now you can use it to control the state of the relay.
 
 ## Blynk References
+
 [Getting Started Guide](https://www.blynk.cc/getting-started)
 [Documentation](http://docs.blynk.cc/)
 [Sketch generator](https://examples.blynk.cc/)
