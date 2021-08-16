@@ -18,4 +18,4 @@
 | [T-OI-PLUS]() | [AliExpress]() |
 
 ## Pinout
-![](image/TOI_Plus.jpg)
+![](image/T-Relay-en.jpg)

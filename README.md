@@ -18,6 +18,6 @@
 | T-OI-PLUS | [AliExpress]() [Amazon]() |
 
 ## Pinout
-![](image/TOI_Plus.jpg)
+![](image/T-Relay-en.jpg)
 
 
