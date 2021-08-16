@@ -3,7 +3,6 @@
 ## Quick start
 1. Downloads APP
 Blynk Apps for iOS or Android
-
 2. Create a Blynk Account
 After you download the Blynk App, you’ll need to create a New Blynk account.(If you have already created an account, you can skip this step)
 
@@ -20,12 +19,12 @@ Select the hardware model you will use.
 ![](../../image/Choose_Your_Hardware.png)
 
 5. Auth Token
-6. 
+
 ![](../../image/Auth_Token_1.png)
 ![](../../image/Auth_Token_2.png)
 
 6. Add a Widget
-7. 
+
 ![](../../image/Add_a_Widget.png)
 Configure GP21, GP19, GP18, and GP5 in sequence.
 
