@@ -10,12 +10,14 @@
 4. 需要安装的库
      - [blynk-library](https://github.com/blynkkk/blynk-library)
      - [ESP-DASH](https://github.com/ayushsharma82/ESP-DASH)
+     - [AsyncTCP](https://github.com/me-no-dev/AsyncTCP)
+     - [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer)
 
 <h3 align = "left">Product 📷:</h3>
 
-|    Product    | Product  Link  |
-| :-----------: | :------------: |
-| [T-OI-PLUS]() | [AliExpress]() |
+|   Product   | Product  Link  |
+| :---------: | :------------: |
+| [T-Relay]() | [AliExpress]() |
 
 ## Pinout
 ![](image/T-Relay-en.jpg)
