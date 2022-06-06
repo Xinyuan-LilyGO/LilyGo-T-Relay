@@ -32,5 +32,5 @@ Select the hardware model you will use.
 ## Blynk References
 
 1. [Getting Started Guide](https://www.blynk.cc/getting-started)
-2. [Documentation](http://docs.blynk.cc/)
+2. [Documentation](https://docs.blynk.io/en/blynk.apps/overview)
 3. [Sketch generator](https://examples.blynk.cc/)

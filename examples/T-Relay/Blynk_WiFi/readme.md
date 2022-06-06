@@ -37,5 +37,5 @@ Configure GP21, GP19, GP18, and GP5 in sequence.
 ## Blynk References
 
 1. [Getting Started Guide](https://www.blynk.cc/getting-started)
-2. [Documentation](http://docs.blynk.cc/)
+2. [Documentation](https://docs.blynk.io/en/blynk.apps/overview)
 3. [Sketch generator](https://examples.blynk.cc/)
