@@ -16,16 +16,15 @@
 ![](../../../image/Blynk/3-Configuration_module.png)
 ![](../../../image/Blynk/3-1-Configuration_module.png.png)
 ![](../../../image/Blynk/3-2-Configuration_module.png)
+![](../../../image/Blynk/3-3-Configuration_module.png)
 
-    ![](../../../image/Blynk/3-3-Configuration_module.png)
-
-1. Set up the Web dashboard 
+5. Set up the Web dashboard 
 
     ![](../../../image/Blynk/4-1-Dash_board.png)
     ![](../../../image/Blynk/4-2-Dash_board.png)
     ![](../../../image/Blynk/4-3-Dash_board.png)
 
-2. Create a New Event. Go to Template -> Edit -> Events tab.
+6. Create a New Event. Go to Template -> Edit -> Events tab.
 
 ![](../../../image/Blynk/5-1-Sening_Events.png)
 ![](../../../image/Blynk/5-2-Sening_Events.png)
