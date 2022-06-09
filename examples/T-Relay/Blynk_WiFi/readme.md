@@ -1,6 +1,9 @@
 <h1 align = "center">🌟LILYGO T-RELAY🌟</h1>
 
 ## Quick start
+
+**Note that this example requires an older version of Blynk.app.  Please use the new version [reference](../Blynk_Console)**
+
 1. Downloads APP
 Blynk Apps for iOS or Android
 2. Create a Blynk Account

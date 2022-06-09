@@ -24,13 +24,13 @@ char pass[] = "YourPassword";
 
 void setup()
 {
-  // Debug console
-  Serial.begin(115200);
+    // Debug console
+    Serial.begin(115200);
 
-  Blynk.begin(auth, ssid, pass);
+    Blynk.begin(auth, ssid, pass);
 }
 
 void loop()
 {
-  Blynk.run();
+    Blynk.run();
 }
