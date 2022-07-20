@@ -32,8 +32,8 @@
 
 |  Product  |                           Product  Link                            |
 | :-------: | :----------------------------------------------------------------: |
-|  T-Relay  | [AliExpress](https://pt.aliexpress.com/item/3256802975186083.html) |
-| T-Relay-8 | [AliExpress](https://pt.aliexpress.com/item/3256804149327347.html) |
+|  T-Relay  | [AliExpress](https://pt.aliexpress.com/item/3256802975186083.html)/[Amazon](https://www.amazon.com/dp/B09XX1HL9Z?ref=myi_title_dp) |
+| T-Relay-8 | [AliExpress](https://pt.aliexpress.com/item/3256804149327347.html)/[Amazon](https://www.amazon.com/dp/B0B6TXKXDN?ref=myi_title_dp) |
 
 ## T-Relay-8 Pinout
 ![](image/T-Relay8.jpg)
