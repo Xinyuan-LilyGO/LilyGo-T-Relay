@@ -34,7 +34,7 @@ examples
 ### ArduinoIDE
 
 1. Install [ArduinoIDE](https://www.arduino.cc/en/software)
-2. Copy all the folders in the `LilyGo-T-SIM7080G/lib` directory to `<C:\Users\UserName\Documents\Arduino\libraries>`. If there is no `libraries` directory, please create a new one. Please note that you are not copying the `lib` directory, but copying the folders in the lib directory
+2. Copy all the folders in the `LilyGo-T-Relay/lib` directory to `<C:\Users\UserName\Documents\Arduino\libraries>`. If there is no `libraries` directory, please create a new one. Please note that you are not copying the `lib` directory, but copying the folders in the lib directory
 3. Open ArduinoIDE -> Tools
 - Board -> ESP32S3 Dev Module
 - USB CDC On Boot -> Enable
