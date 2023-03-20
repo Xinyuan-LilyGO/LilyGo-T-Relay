@@ -1,0 +1,110 @@
+esphome:
+  name: LilyGo-T-RelayS3
+  friendly_name: relay
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+sn74hc595:
+  - id: "sn74hc595_hub"
+    data_pin: 7
+    clock_pin: 5
+    latch_pin: 6
+    sr_count: 1
+
+# Individual outputs
+switch:
+  - platform: gpio
+    # SN74HC595 Pin #0
+    name: "Switch 1"
+    pin:
+      sn74hc595: sn74hc595_hub
+      # Use pin number 0
+      number: 0
+      inverted: false
+      id: relay1
+
+  - platform: gpio
+    # SN74HC595 Pin #1
+    name: "Switch 2"
+    pin:
+      sn74hc595: sn74hc595_hub
+      # Use pin number 1
+      number: 1
+      inverted: false
+      id: relay2
+
+  - platform: gpio
+    # SN74HC595 Pin #2
+    name: "Switch 3"
+    pin:
+      sn74hc595: sn74hc595_hub
+      # Use pin number 2
+      number: 2
+      inverted: false
+      id: relay3
+
+  - platform: gpio
+    # SN74HC595 Pin #3
+    name: "Switch 4"
+    pin:
+      sn74hc595: sn74hc595_hub
+      # Use pin number 3
+      number: 3
+      inverted: false
+      id: relay4
+
+  - platform: gpio
+    # SN74HC595 Pin #4
+    name: "Switch 5"
+    pin:
+      sn74hc595: sn74hc595_hub
+      # Use pin number 4
+      number: 4
+      inverted: false
+      id: relay5
+
+  - platform: gpio
+    # SN74HC595 Pin #5
+    name: "Switch 6"
+    pin:
+      sn74hc595: sn74hc595_hub
+      # Use pin number 5
+      number: 5
+      inverted: false
+      id: relay6
+
+mqtt:
+  broker: Your MQTT server
+  # username: Your MQTT Username
+  # password:  Your MQTT Password
+  port: Your MQTT port
+
+# Enable logging
+logger:
+  level: DEBUG
+  baud_rate: 115200
+  logs:
+    mqtt.component: DEBUG
+    mqtt.client: ERROR
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "E4AvftHULay+f6wwnKgHzsu7q7nzUdcrHp/Mjhyyjvk="
+
+ota:
+  password: "0204c885b8f04777ae94a8e51b4619c5"
+
+wifi:
+  ssid: "Your WiFi ssid"
+  password: "Your WiFi password"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Relay Fallback Hotspot"
+    password: "fltzKdbsbDEn"
+
+captive_portal:
