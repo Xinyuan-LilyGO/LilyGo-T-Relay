@@ -2,7 +2,7 @@
 #include <WiFi.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include "SensorPCF8563.tpp"
+#include "SensorPCF8563.hpp"
 #include <ShiftRegister74HC595_NonTemplate.h>
 #include <AceButton.h>
 #include <U8g2lib.h>
