@@ -22,55 +22,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      XL9555_ExtensionIOInterrupt.ino
+ * @file      CM32181Constants.h
  * @author    Lewis He (lewishe@outlook.com)
- * @date      2023-01-03
+ * @date      2023-04-14
  *
  */
-#include <Wire.h>
-#include <SPI.h>
-#include <Arduino.h>
-#include <time.h>
-#include "ExtensionIOXL9555.hpp"
 
-#define I2C_SDA                     8
-#define I2C_SCL                     9
-#define XL_IRQ                      3
+#pragma once
 
-ExtensionIOXL9555 extIO;
+#define CM32181_SLAVE_ADDRESS       (0x10)
 
-void setup()
-{
-    Serial.begin(115200);
-    while (!Serial);
 
-    Wire.begin(I2C_SDA, I2C_SCL);
 
-    // Device address 0x20~0x27
-    if (!extIO.begin(Wire, XL9555_SLAVE_ADDRESS4, I2C_SDA, I2C_SCL)) {
-        Serial.println("Failed to find XL9555 - check your wiring!");
-        while (1) {
-            delay(1000);
-        }
-    }
+// CM32181 slave address can be 0x10 or 0x48, determined by pin ADDR configuration
+#define CM32181_ADDR_ALS            (0x10) // 7-bit
+#define CM32181_ADDR_ALS1           (0x48) // 7-bit
 
-    pinMode(XL_IRQ, INPUT_PULLUP);
-    // Set PORT0 as input
-    extIO.configPort(ExtensionIOXL9555::PORT0, INPUT);
-    // Set PORT1 as input
-    extIO.configPort(ExtensionIOXL9555::PORT1, INPUT);
-}
+// CM32181 registers
+#define CM32181_REG_ALS_CONF        (uint8_t)(0x00)
+#define CM32181_REG_ALS_THDH        (uint8_t)(0x01)
+#define CM32181_REG_ALS_THDL        (uint8_t)(0x02)
+#define CM32181_REG_ALS_PSM         (uint8_t)(0x03)
+#define CM32181_REG_ALS_DATA        (uint8_t)(0x04)
+#define CM32181_REG_ALS_STATUS      (uint8_t)(0x06)
+#define CM32181_REG_ID              (uint8_t)(0x07)
 
-void loop()
-{
-    // When the interrupt occurs, we read the mask value of PORT
-    if (digitalRead(XL_IRQ) == LOW) {
-        Serial.print("PORT0:0b");
-        Serial.print(extIO.readPort(ExtensionIOXL9555::PORT0), BIN);
-        Serial.print("\tPORT1:0b");
-        Serial.println(extIO.readPort(ExtensionIOXL9555::PORT1), BIN);
-    }
-}
+#define CM32181_CHIP_ID             (0x81)
+
+
+
+
+
+
+
+
+
 
 
 

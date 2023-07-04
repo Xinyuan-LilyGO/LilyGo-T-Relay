@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      ExtensionIOXL9555.tpp
+ * @file      ExtensionIOXL9555.hpp
  * @author    Lewis He (lewishe@outlook.com)
  * @date      2022-12-27
  *
@@ -87,6 +87,17 @@ public:
     {
         deinit();
     }
+
+#if defined(ARDUINO)
+    bool init(TwoWire &w, int sda = DEFAULT_SDA, int scl = DEFAULT_SCL, uint8_t addr = XL9555_SLAVE_ADDRESS0)
+    {
+        __wire = &w;
+        __sda = sda;
+        __scl = scl;
+        __addr = addr;
+        return begin();
+    }
+#endif
 
     bool init()
     {

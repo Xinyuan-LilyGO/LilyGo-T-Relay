@@ -22,21 +22,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      XL9555_ExtensionIOWirte.ino
+ * @file      TouchDrv_FT3267_LilyGo_T_RGB.ino
  * @author    Lewis He (lewishe@outlook.com)
- * @date      2023-01-03
+ * @date      2023-04-17
  *
  */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include <time.h>
+#include "TouchDrvFT6X36.hpp"
 #include "ExtensionIOXL9555.hpp"
 
-#define I2C_SDA                     8
-#define I2C_SCL                     9
-#define XL_IRQ                      3
+#ifndef SENSOR_SDA
+#define SENSOR_SDA  8
+#endif
 
+#ifndef SENSOR_SCL
+#define SENSOR_SCL  48
+#endif
+
+#ifndef SENSOR_IRQ
+#define SENSOR_IRQ  1
+#endif
+
+#ifndef SENSOR_RST
+#define SENSOR_RST  1
+#endif
+
+TouchDrvFT6X36 touch;
 ExtensionIOXL9555 extIO;
 
 void setup()
@@ -44,42 +57,58 @@ void setup()
     Serial.begin(115200);
     while (!Serial);
 
+    pinMode(SENSOR_IRQ, INPUT);
 
-    Wire.begin(I2C_SDA, I2C_SCL);
-    // Device address 0x20~0x27
-    if (!extIO.begin(Wire, XL9555_SLAVE_ADDRESS4, I2C_SDA, I2C_SCL)) {
+    // T-RGB Use 0x20 device address
+    if (!extIO.begin(Wire, XL9555_SLAVE_ADDRESS0, SENSOR_SDA, SENSOR_SCL)) {
         Serial.println("Failed to find XL9555 - check your wiring!");
         while (1) {
             delay(1000);
         }
     }
+
     // Set PORT0 as output
     extIO.configPort(ExtensionIOXL9555::PORT0, OUTPUT);
-    // Set PORT1 as output
-    extIO.configPort(ExtensionIOXL9555::PORT1, OUTPUT);
+    extIO.writePort(ExtensionIOXL9555::PORT0, 0xFF);
+
+    extIO.digitalWrite(SENSOR_RST, LOW);
+    delay(300);
+    extIO.digitalWrite(SENSOR_RST, HIGH);
+    delay(300);
+
+
+    if (!touch.begin(Wire, FT3267_SLAVE_ADDRESS, SENSOR_SDA, SENSOR_SCL)) {
+        Serial.println("Failed to find FT3267 - check your wiring!");
+        while (1) {
+            delay(1000);
+        }
+    }
+    touch.interruptTrigger();
+
+    Serial.println("Init FT3267 Sensor success!");
 }
+
 
 void loop()
 {
-    // Set all PORTs to 1, and the parameters here are mask values, corresponding to the 0~7 bits
-    Serial.println("Set port HIGH");
-    extIO.writePort(ExtensionIOXL9555::PORT0, 0xFF);
-    delay(1000);
-
-    Serial.println("Set port LOW");
-    // Set all PORTs to 0, and the parameters here are mask values, corresponding to the 0~7 bits
-    extIO.writePort(ExtensionIOXL9555::PORT1, 0x00);
-    delay(1000);
-
-    Serial.println("digitalWrite");
-    extIO.digitalWrite(ExtensionIOXL9555::IO0, HIGH);
-    delay(1000);
-
-    Serial.println("digitalToggle");
-    extIO.digitalToggle(ExtensionIOXL9555::IO0);
-    delay(1000);
-
-
+    int16_t x[2], y[2];
+    if (digitalRead(SENSOR_IRQ) == LOW) {
+        uint8_t touched = touch.getPoint(x, y, 2);
+        for (int i = 0; i < touched; ++i) {
+            Serial.print("X[");
+            Serial.print(i);
+            Serial.print("]:");
+            Serial.print(x[i]);
+            Serial.print(" ");
+            Serial.print(" Y[");
+            Serial.print(i);
+            Serial.print("]:");
+            Serial.print(y[i]);
+            Serial.print(" ");
+        }
+        Serial.println();
+    }
+    delay(50);
 }
 
 

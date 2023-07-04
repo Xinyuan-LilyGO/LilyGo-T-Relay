@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      SensorPCF8563.tpp
+ * @file      SensorPCF8563.hpp
  * @author    Lewis He (lewishe@outlook.com)
  * @date      2022-12-09
  *
@@ -188,6 +188,17 @@ public:
         deinit();
     }
 
+#if defined(ARDUINO)
+    bool init(TwoWire &w, int sda = DEFAULT_SDA, int scl = DEFAULT_SCL, uint8_t addr = PCF8563_SLAVE_ADDRESS)
+    {
+        __wire = &w;
+        __sda = sda;
+        __scl = scl;
+        __addr = addr;
+        return begin();
+    }
+#endif
+
     bool init()
     {
         return begin();
@@ -197,6 +208,12 @@ public:
     {
         // end();
     }
+
+    void setDateTime(RTC_DateTime datetime)
+    {
+        setDateTime(datetime.year, datetime.month, datetime.day, datetime.hour, datetime.minute, datetime.second);
+    }
+
 
     void setDateTime(uint16_t year,
                      uint8_t month,
@@ -537,13 +554,42 @@ private:
     {
         // Check whether RTC time is valid? If it is invalid, it can be judged
         // that there is a problem with the hardware, or the RTC power supply voltage is too low
+        /*
         int count = 0;
         for (int i = 0; i < 3; ++i) {
             if (!getRegisterBit(PCF8563_SEC_REG, 7)) {
                 count++;
             }
         }
-        return (count == 3);
+        if (count != 3 ) {
+            return false;
+        }
+        */
+
+        // 230704:Does not use power-off judgment, if the RTC backup battery is not installed,
+        //    it will return failure. Here only to judge whether the device communication is normal
+
+        //Check device is online
+        int ret = readRegister(PCF8563_SEC_REG);
+        if (ret == DEV_WIRE_ERR) {
+            return false;
+        }
+        if (BCD2DEC(ret & 0x7F) > 59) {
+            return false;
+        }
+
+        // Determine whether the hardware clock year, month, and day match the internal time of the RTC.
+        // If they do not match, it will be updated to the compilation date
+        RTC_DateTime compileDatetime =  RTC_DateTime(__DATE__, __TIME__);
+        RTC_DateTime hwDatetime = getDateTime();
+        if (compileDatetime.year != hwDatetime.year ||
+                compileDatetime.month != hwDatetime.month ||
+                compileDatetime.day != hwDatetime.month
+           ) {
+            LOG("No match yy:mm:dd . set datetime to compilation date time");
+            setDateTime(compileDatetime);
+        }
+        return true;
     }
 
     int getReadMaskImpl()

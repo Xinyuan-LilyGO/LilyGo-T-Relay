@@ -22,64 +22,68 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      XL9555_ExtensionIOWirte.ino
+ * @file      TouchDrv_CSTxxx_GetPoint.ino
  * @author    Lewis He (lewishe@outlook.com)
- * @date      2023-01-03
+ * @date      2023-04-24
  *
  */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include <time.h>
-#include "ExtensionIOXL9555.hpp"
+#include "TouchDrvCSTXXX.hpp"
 
-#define I2C_SDA                     8
-#define I2C_SCL                     9
-#define XL_IRQ                      3
+#ifndef SENSOR_SDA
+#define SENSOR_SDA  8
+#endif
 
-ExtensionIOXL9555 extIO;
+#ifndef SENSOR_SCL
+#define SENSOR_SCL  10
+#endif
+
+#ifndef SENSOR_IRQ
+#define SENSOR_IRQ  5
+#endif
+
+#ifndef SENSOR_RST
+#define SENSOR_RST  -1
+#endif
+
+TouchDrvCSTXXX touch;
+int16_t x[5], y[5];
 
 void setup()
 {
     Serial.begin(115200);
     while (!Serial);
 
-
-    Wire.begin(I2C_SDA, I2C_SCL);
-    // Device address 0x20~0x27
-    if (!extIO.begin(Wire, XL9555_SLAVE_ADDRESS4, I2C_SDA, I2C_SCL)) {
-        Serial.println("Failed to find XL9555 - check your wiring!");
-        while (1) {
-            delay(1000);
-        }
-    }
-    // Set PORT0 as output
-    extIO.configPort(ExtensionIOXL9555::PORT0, OUTPUT);
-    // Set PORT1 as output
-    extIO.configPort(ExtensionIOXL9555::PORT1, OUTPUT);
+    touch.setPins(SENSOR_RST, SENSOR_IRQ);
+    touch.init(Wire, SENSOR_SDA, SENSOR_SCL, CSTXXX_SLAVE_ADDRESS);
+    Serial.println("CSTxxx is not a standard I2C device, and it is impossible to read whether the device is online through any register, please ensure that the device is connected to the host");
 }
 
 void loop()
 {
-    // Set all PORTs to 1, and the parameters here are mask values, corresponding to the 0~7 bits
-    Serial.println("Set port HIGH");
-    extIO.writePort(ExtensionIOXL9555::PORT0, 0xFF);
-    delay(1000);
-
-    Serial.println("Set port LOW");
-    // Set all PORTs to 0, and the parameters here are mask values, corresponding to the 0~7 bits
-    extIO.writePort(ExtensionIOXL9555::PORT1, 0x00);
-    delay(1000);
-
-    Serial.println("digitalWrite");
-    extIO.digitalWrite(ExtensionIOXL9555::IO0, HIGH);
-    delay(1000);
-
-    Serial.println("digitalToggle");
-    extIO.digitalToggle(ExtensionIOXL9555::IO0);
-    delay(1000);
-
-
+    uint8_t point = touch.getPoint(x, y, 5);
+    if (point) {
+        Serial.print("Point:");
+        Serial.print(point);
+        Serial.print(" ");
+        uint8_t touched = touch.getPoint(x, y, 2);
+        for (int i = 0; i < touched; ++i) {
+            Serial.print("X[");
+            Serial.print(i);
+            Serial.print("]:");
+            Serial.print(x[i]);
+            Serial.print(" ");
+            Serial.print(" Y[");
+            Serial.print(i);
+            Serial.print("]:");
+            Serial.print(y[i]);
+            Serial.print(" ");
+        }
+        Serial.println();
+    }
+    delay(5);
 }
 
 

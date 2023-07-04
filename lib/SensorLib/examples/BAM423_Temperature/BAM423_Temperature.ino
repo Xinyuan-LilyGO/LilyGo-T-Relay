@@ -22,68 +22,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      PCF8563_SimpleTime.ino
+ * @file      BAM423_Temperature.ino
  * @author    Lewis He (lewishe@outlook.com)
- * @date      2022-12-12
+ * @date      2023-04-01
  *
  */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include "SensorPCF8563.hpp"
+#include "SensorBMA423.hpp"
 
-// lilygo t-beam-s3-core pin
-#define I2C_SDA                     42
-#define I2C_SCL                     41
-#define RTC_IRQ                     14
+#ifndef SENSOR_SDA
+#define SENSOR_SDA  21
+#endif
 
-SensorPCF8563 rtc;
-uint32_t lastMillis;
+#ifndef SENSOR_SCL
+#define SENSOR_SCL  22
+#endif
+
+#ifndef SENSOR_IRQ
+#define SENSOR_IRQ  39
+#endif
+
+SensorBMA423 accel;
 
 void setup()
 {
     Serial.begin(115200);
     while (!Serial);
 
-#ifdef LILYGO_TBEAM_SUPREME_V3_0
-    extern  bool setupPower();
-    setupPower();
-#endif
+    pinMode(SENSOR_IRQ, INPUT);
 
-    pinMode(RTC_IRQ, INPUT_PULLUP);
-
-    if (!rtc.begin(Wire, PCF8563_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
-        Serial.println("Failed to find PCF8563 - check your wiring!");
+    if (!accel.begin(Wire, BMA423_SLAVE_ADDRESS, SENSOR_SDA, SENSOR_SCL)) {
+        Serial.println("Failed to find BMA423 - check your wiring!");
         while (1) {
             delay(1000);
         }
     }
-
-    uint16_t year = 2022;
-    uint8_t month = 12;
-    uint8_t day = 12;
-    uint8_t hour = 21;
-    uint8_t minute = 00;
-    uint8_t second = 30;
-
-    rtc.setDateTime(year, month, day, hour, minute, second);
-
+    Serial.println("Init BAM423 Sensor success!");
 }
 
 
 void loop()
 {
-    if (millis() - lastMillis > 1000) {
-        lastMillis = millis();
-        RTC_DateTime datetime = rtc.getDateTime();
-        Serial.printf(" Year :"); Serial.print(datetime.year);
-        Serial.printf(" Month:"); Serial.print(datetime.month);
-        Serial.printf(" Day :"); Serial.print(datetime.day);
-        Serial.printf(" Hour:"); Serial.print(datetime.hour);
-        Serial.printf(" Minute:"); Serial.print(datetime.minute);
-        Serial.printf(" Sec :"); Serial.println(datetime.second);
-
-    }
+    Serial.print("getTemperature:");
+    Serial.print(accel.getTemperature(SensorBMA423::TEMP_DEG));
+    Serial.print("*C ");
+    Serial.print(accel.getTemperature(SensorBMA423::TEMP_FAHREN));
+    Serial.print("*F");
+    delay(1000);
 }
 
 

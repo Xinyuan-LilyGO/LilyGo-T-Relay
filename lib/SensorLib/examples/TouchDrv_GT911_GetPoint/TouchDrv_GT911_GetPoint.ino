@@ -22,68 +22,79 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @file      PCF8563_SimpleTime.ino
+ * @file      GT911_GetPoint.ino
  * @author    Lewis He (lewishe@outlook.com)
- * @date      2022-12-12
+ * @date      2023-04-12
  *
  */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include "SensorPCF8563.hpp"
+#include "TouchDrvGT911.hpp"
 
-// lilygo t-beam-s3-core pin
-#define I2C_SDA                     42
-#define I2C_SCL                     41
-#define RTC_IRQ                     14
+#ifndef SENSOR_SDA
+#define SENSOR_SDA  2
+#endif
 
-SensorPCF8563 rtc;
-uint32_t lastMillis;
+#ifndef SENSOR_SCL
+#define SENSOR_SCL  3
+#endif
+
+#ifndef SENSOR_IRQ
+#define SENSOR_IRQ  1
+#endif
+
+#ifndef SENSOR_RST
+#define SENSOR_RST  10
+#endif
+
+TouchDrvGT911 touch;
+int16_t x[5], y[5];
+
+
 
 void setup()
 {
     Serial.begin(115200);
     while (!Serial);
 
-#ifdef LILYGO_TBEAM_SUPREME_V3_0
-    extern  bool setupPower();
-    setupPower();
-#endif
+    touch.setPins(SENSOR_RST, SENSOR_IRQ);
 
-    pinMode(RTC_IRQ, INPUT_PULLUP);
-
-    if (!rtc.begin(Wire, PCF8563_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
-        Serial.println("Failed to find PCF8563 - check your wiring!");
+    if (!touch.init(Wire,  SENSOR_SDA, SENSOR_SCL, GT911_SLAVE_ADDRESS_L )) {
         while (1) {
+            Serial.println("Failed to find GT911 - check your wiring!");
             delay(1000);
         }
     }
 
-    uint16_t year = 2022;
-    uint8_t month = 12;
-    uint8_t day = 12;
-    uint8_t hour = 21;
-    uint8_t minute = 00;
-    uint8_t second = 30;
+    //Set to trigger on falling edge
+    touch.setInterruptMode(FALLING);
 
-    rtc.setDateTime(year, month, day, hour, minute, second);
+    Serial.println("Init GT911 Sensor success!");
 
 }
 
-
 void loop()
 {
-    if (millis() - lastMillis > 1000) {
-        lastMillis = millis();
-        RTC_DateTime datetime = rtc.getDateTime();
-        Serial.printf(" Year :"); Serial.print(datetime.year);
-        Serial.printf(" Month:"); Serial.print(datetime.month);
-        Serial.printf(" Day :"); Serial.print(datetime.day);
-        Serial.printf(" Hour:"); Serial.print(datetime.hour);
-        Serial.printf(" Minute:"); Serial.print(datetime.minute);
-        Serial.printf(" Sec :"); Serial.println(datetime.second);
-
+    if (touch.getTouched()) {
+        uint8_t point = touch.getPoint(x, y, 5);
+        Serial.print("Point:"); Serial.println(point);
+        uint8_t touched = touch.getPoint(x, y, 2);
+        for (int i = 0; i < touched; ++i) {
+            Serial.print("X[");
+            Serial.print(i);
+            Serial.print("]:");
+            Serial.print(x[i]);
+            Serial.print(" ");
+            Serial.print(" Y[");
+            Serial.print(i);
+            Serial.print("]:");
+            Serial.print(y[i]);
+            Serial.print(" ");
+        }
+        Serial.println();
     }
+    delay(5);
 }
 
 
