@@ -1,0 +1,61 @@
+{
+    "name": "Ethernet", 
+    "version": "2.0.0", 
+    "keywords": [
+        "communication"
+    ], 
+    "description": "Enables network connection (local and Internet) using the Arduino Ethernet Board or Shield.", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif32", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "nordicnrf52", 
+        "ststm32", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "authors": [
+        {
+            "email": "see AUTHORS file for details", 
+            "url": null, 
+            "maintainer": false, 
+            "name": "Various"
+        }, 
+        {
+            "email": "paul@pjrc.com", 
+            "url": null, 
+            "maintainer": true, 
+            "name": "Paul Stoffregen"
+        }, 
+        {
+            "email": "info@arduino.cc", 
+            "url": null, 
+            "maintainer": true, 
+            "name": "Arduino"
+        }
+    ], 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/arduino-libraries/Ethernet"
+    }, 
+    "homepage": "http://www.arduino.cc/en/Reference/Ethernet", 
+    "export": {
+        "include": null, 
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ]
+    }, 
+    "id": 872
+}
