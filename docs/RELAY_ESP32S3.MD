@@ -48,7 +48,10 @@ examples
 - USB Mode -> Hardware CDC and JIAG
 - Upload Mode -> UART0/Hardware CDC
 - Upload Speed -> 921600
-4. Insert USB into the PC and click Upload <If the upload fails, keep pressing the BOOT button, click RST, and then click Upload. When the upload is complete, click RST to exit the download mode>
+
+
+
+
 
 ## 3️⃣ Tips:
 
@@ -60,7 +63,14 @@ examples
 6. ⚠`T-Relay` is a serial-to-parallel design for `74HC595`, allowing multiple `T-Relay` sub-boards to be connected, but please note that due to the design of the power supply of the main board, it is currently recommended that cascaded devices not More than 3 relay sub-boards, cascading three sub-boards, the power supply of the main board will be hot, which is normal, please do not touch it with your hands to prevent burns. If you work for a long time, it is recommended to paste a heat sink on the inductor of the power supply to assist the main board to dissipate heat.
 7. ⚠ The DS18B20 sensor interface is reserved by default, and there is no such sensor by default
 8. External reserved expansion screen interface [Support TFT Module Link](http://www.lcdwiki.com/zh/2.8inch_SPI_Module_ILI9341_SKU:MSP2807)
-
+9. The board uses USB as the JTAG upload port. When printing serial port information on USB_CDC_ON_BOOT configuration needs to be turned on. 
+If the port cannot be found when uploading the program or the USB has been used for other functions, the port does not appear. 
+Please enter the upload mode manually. 
+   1. Connect the board via the USB cable
+   2. Press and hold the BOOT button , While still pressing the BOOT button, press RST
+   3. Release the RST
+   4. Release the BOOT button
+   5. Upload sketch
 
 ## 4️⃣ ESP32S3 Pins:
 
