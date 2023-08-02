@@ -15,4 +15,4 @@
 [LilyGo Shop](https://www.lilygo.cc/products/t-relay-5v-8-channel-relay)
 
 #### T-Relay S3 (Basic ESP32S3)
-[LilyGo Shop]()
+[LilyGo Shop](https://www.aliexpress.us/item/3256805375487806.html?spm=5261.ProductManageOnline.0.0.35ce2ddb2C2zD8&gatewayAdapt=glo2usa4itemAdapt)
