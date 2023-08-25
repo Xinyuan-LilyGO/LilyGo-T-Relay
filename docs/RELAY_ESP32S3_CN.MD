@@ -13,7 +13,8 @@ examples
 ├─DS18x20_Temperature            #外接DS18B20示例     
 ├─HomeAssistant                  #简易配置就可以接入家庭助理 +OLED SS1306  示例
 ├─NimBLE_Server                  #使用BLE 控制继电器        
-├─RTC_DS3231                     #使用DS3231 RTC模块 
+├─RTC_DS3231_External_Module   # 使用 外部接入 DS3231 RTC模块
+├─RTC_PCF8563_TimeSynchronization    # 使用板载 PCF8563 RTC 
 ├─TFT_eSPI                       #使用2.4'寸电阻触摸屏 
 └─UnitTestExample                #测试程序     
 

@@ -10,7 +10,8 @@ examples
 ├─DS18x20_Temperature          # External DS18B20 Example，The default is that there is no such sensor, which requires an external connection
 ├─HomeAssistant                # Example of easy configuration for accessing Home Assistant+OLED SS1306
 ├─NimBLE_Server                # uses BLE to control the relay
-├─RTC_DS3231                   # using DS3231 RTC module
+├─RTC_DS3231_External_Module   # using DS3231 External RTC module
+├─RTC_PCF8563_TimeSynchronization    # using On board PCF8563 RTC 
 ├─TFT_ESPI                     # using a 2.4 'inch resistive touch screen
 └─UnitTestExample              # Test program
 

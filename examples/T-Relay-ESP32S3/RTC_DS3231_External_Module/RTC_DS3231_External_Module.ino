@@ -1,4 +1,7 @@
 // Date and time functions using a DS3231 RTC connected via I2C and Wire lib
+// @note DS3231 is an external RTC module, there is no DS3231 on T-Relay-S3,
+// here only demonstrates how to use an external I2C device
+
 #include "RTClib.h"
 #include <Wire.h>
 
