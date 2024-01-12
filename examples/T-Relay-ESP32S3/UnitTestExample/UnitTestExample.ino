@@ -105,8 +105,9 @@ void setup()
     pinMode(RTC_IRQ, INPUT_PULLUP);
 #endif
 
-    pinMode(0, INPUT_PULLUP);
-    boot.init(0, HIGH, 0);
+    const uint8_t boot_pin = 0;
+    pinMode(boot_pin, INPUT_PULLUP);
+    boot.init(boot_pin, HIGH, 0);
     ButtonConfig *buttonConfig = boot.getButtonConfig();
     buttonConfig->setEventHandler(ButtonHandleEvent);
     buttonConfig->setFeature(ButtonConfig::kFeatureClick);
