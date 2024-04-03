@@ -26,10 +26,19 @@ extern void loopHA();
 
 void setup()
 {
+    // EN Pin is only available in V1.1 version
+    // Set Relay enable pin to output
+    pinMode(ENABLE_PIN, OUTPUT);
+    // Relay output enable pin disable
+    digitalWrite(ENABLE_PIN, HIGH);
+
     // Make sure that the driver chip output is set to LOW when powering on
     control = new ShiftRegister74HC595_NonTemplate(8, DATA_PIN, CLOCK_PIN, LATCH_PIN);
     assert(control);
     control->setAllLow();
+
+    // Relay output enable pin enable
+    digitalWrite(ENABLE_PIN, LOW);
 
 
     Serial.begin(115200);

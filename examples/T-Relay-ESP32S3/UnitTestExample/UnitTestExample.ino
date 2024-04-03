@@ -19,9 +19,9 @@ using namespace ace_button;
 #define DATA_PIN                    7
 #define CLOCK_PIN                   5
 #define LATCH_PIN                   6
+#define ENABLE_PIN                  4 //EN Pin is only available in V1.1 version
 
-
-uint8_t configSize = 3;
+uint8_t configSize = 3; //Configuration output 74CH595 quantity
 ShiftRegister74HC595_NonTemplate     *control;
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C *u8g2 = nullptr;
@@ -93,10 +93,21 @@ void ButtonHandleEvent(AceButton *n, uint8_t eventType, uint8_t buttonState)
 }
 void setup()
 {
+    // EN Pin is only available in V1.1 version
+    // Set Relay enable pin to output
+    pinMode(ENABLE_PIN, OUTPUT);
+    // Relay output enable pin disable
+    digitalWrite(ENABLE_PIN, HIGH);
+
     // Make sure that the driver chip output is set to LOW when powering on
-    control = new ShiftRegister74HC595_NonTemplate(24, DATA_PIN, CLOCK_PIN, LATCH_PIN);
+    control = new ShiftRegister74HC595_NonTemplate(configSize * 8, DATA_PIN, CLOCK_PIN, LATCH_PIN);
     assert(control);
     control->setAllLow();
+
+    // EN Pin is only available in V1.1 version
+    // Relay output enable pin enable
+    digitalWrite(ENABLE_PIN, LOW);
+
 
     Serial.begin(115200);
     while (!Serial);

@@ -2,7 +2,7 @@
 #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
 #include <ShiftRegister74HC595_NonTemplate.h>
 #include <U8g2lib.h>
-#include "SensorPCF8563.tpp"
+#include "SensorPCF8563.hpp"
 #include "font/Open_Sans_Hebrew_Bold_32.h"
 #include "font/Open_Sans_Hebrew_Condensed_Bold_22.h"
 #include <Ticker.h>
@@ -40,6 +40,9 @@ extern Ticker ledTick;
 #define LATCH_PIN                   6
 #define GREEN_LED_CH                6
 #define RED_LED_CH                  7
+
+// EN Pin is only available in V1.1 version
+#define ENABLE_PIN                  4
 
 
 

@@ -13,6 +13,7 @@
 #define DATA_PIN                    7
 #define CLOCK_PIN                   5
 #define LATCH_PIN                   6
+#define ENABLE_PIN                  4       //EN Pin is only available in V1.1 version
 
 ShiftRegister74HC595_NonTemplate *control = NULL;
 static NimBLEServer *pServer;
@@ -184,12 +185,22 @@ static CharacteristicCallbacks chrCallbacks;
 
 void setup()
 {
+    // EN Pin is only available in V1.1 version
+    // Set Relay enable pin to output
+    pinMode(ENABLE_PIN, OUTPUT);
+    // Relay output enable pin disable
+    digitalWrite(ENABLE_PIN, HIGH);
+
     Serial.begin(115200);
 
     Serial.println("Starting NimBLE Server");
 
     control = new ShiftRegister74HC595_NonTemplate(6, DATA_PIN, CLOCK_PIN, LATCH_PIN);
     assert(control);
+    control->setAllLow();
+
+    // Relay output enable pin enable
+    digitalWrite(ENABLE_PIN, LOW);
 
     /** sets device name */
     NimBLEDevice::init("LilyGo-Relay");
