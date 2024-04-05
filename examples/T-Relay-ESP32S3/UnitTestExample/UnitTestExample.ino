@@ -14,7 +14,7 @@ using namespace ace_button;
 
 #define I2C_SDA                     16
 #define I2C_SCL                     17
-#define RTC_IRQ                     15
+#define RTC_IRQ                     18
 
 #define DATA_PIN                    7
 #define CLOCK_PIN                   5

@@ -77,11 +77,11 @@ Please enter the upload mode manually.
 
 | Shift register | DATA | CLOCK | LATCH |
 | -------------- | ---- | ----- | ----- |
-| GPIO           | 41   | 4     | 5     |
+| GPIO           | 7    | 5     | 6     |
 
 | RTC  | SDA | SCL | IRQ |
 | ---- | --- | --- | --- |
-| GPIO | 16  | 17  | 15  |
+| GPIO | 16  | 17  | 18  |
 
 ## 5️⃣ Shift register hardware distribution:
 

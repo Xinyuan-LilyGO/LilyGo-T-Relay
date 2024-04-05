@@ -14,7 +14,7 @@
 
 #define I2C_SDA                     16
 #define I2C_SCL                     17
-#define RTC_IRQ                     15
+#define RTC_IRQ                     18
 
 const char *ssid       = "YOUR_SSID";
 const char *password   = "YOUR_PASS";
