@@ -63,7 +63,7 @@ examples
 5. ⚠**If an external relay load greater than 48V is connected, please power off the main board and connected equipment first to prevent electric shock.**
 6. ⚠`T-Relay` is a serial-to-parallel design for `74HC595`, allowing multiple `T-Relay` sub-boards to be connected, but please note that due to the design of the power supply of the main board, it is currently recommended that cascaded devices not More than 3 relay sub-boards, cascading three sub-boards, the power supply of the main board will be hot, which is normal, please do not touch it with your hands to prevent burns. If you work for a long time, it is recommended to paste a heat sink on the inductor of the power supply to assist the main board to dissipate heat.
 7. ⚠ The DS18B20 sensor interface is reserved by default, and there is no such sensor by default
-8. External reserved expansion screen interface [Support TFT Module Link](http://www.lcdwiki.com/zh/2.8inch_SPI_Module_ILI9341_SKU:MSP2807)
+8. External reserved expansion screen interface [Support TFT Module Link](http://www.lcdwiki.com/zh/2.8inch_SPI_Module_ILI9341_SKU:MSP2807) , Relay-S3 default design size is 2.4 inches
 9. The board uses USB as the JTAG upload port. When printing serial port information on USB_CDC_ON_BOOT configuration needs to be turned on. 
 If the port cannot be found when uploading the program or the USB has been used for other functions, the port does not appear. 
 Please enter the upload mode manually. 
