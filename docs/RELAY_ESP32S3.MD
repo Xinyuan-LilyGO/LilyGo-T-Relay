@@ -1,3 +1,12 @@
+<!--
+ * @Description: None
+ * @version: V1.0.0
+ * @Author: None
+ * @Date: 2024-05-29 14:38:46
+ * @LastEditors: LILYGO_L
+ * @LastEditTime: 2024-05-29 16:52:30
+ * @License: GPL 3.0
+-->
 <h1 align = "center">✨ LilyGO T-Relay S3  ✨</h1>
 
 ## **English | [中文](README_CN.MD)**
@@ -13,7 +22,8 @@ examples
 ├─RTC_DS3231_External_Module   # using DS3231 External RTC module
 ├─RTC_PCF8563_TimeSynchronization    # using On board PCF8563 RTC 
 ├─TFT_ESPI                     # using a 2.4 'inch resistive touch screen
-└─UnitTestExample              # Test program
+├─UnitTestExample              # Test program
+└─T-Relay6-S3-W5500_Original_Test        #T-Replay6-S3 External W5500 Factory Test Procedure
 
 ````
 
@@ -88,3 +98,14 @@ Please enter the upload mode manually.
 | Relay Channel | CH1 | CH2 | CH3 | CH4 | CH5 | CH6 | CH7       | CH8     |
 | ------------- | --- | --- | --- | --- | --- | --- | --------- | ------- |
 | GPIO          | SR1 | SR2 | SR3 | SR4 | SR5 | SR6 | GREEN LED | RED LED |
+
+## 6️⃣ T-Relay6-S3-W5500 Pin:
+
+| T-Relay6-S3-W5500 Pin  | ESP32S3 Pin|
+| :------------------: | :------------------:|
+| SCLK         | IO9       |
+| MISO         | IO11       |
+| MOSI         | IO13       |
+| CS         | IO3       |
+| RST         | IO8       |
+| INT         | IO12       |

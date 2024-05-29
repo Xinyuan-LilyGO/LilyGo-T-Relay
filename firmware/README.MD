@@ -11,6 +11,7 @@
 | [LilyGo-T-Relay-S3][3]                       | [firmware](./LilyGo-T-Relay-S3/firmware_LilyGo-Relay-UnitTest_20230830.bin)                                 |
 | [LilyGo-T-Relay_W5500_Ethernet 4 Channel][4] | [firmware](./LilyGo-T-Relay_W5500_EthernetServer_Relay4_V1.0_firmware/W5500_EthernetServer_Relay4_V1.0.bin) |
 | [LilyGo-T-Relay_W5500_Ethernet 8 Channel][4] | [firmware](./LilyGo-T-Relay_W5500_EthernetServer_Relay8_V1.0_firmware/W5500_EthernetServer_Relay8_V1.0.bin) |
+| [T-Relay6-S3-W5500_Original_Test] | [firmware](./LilyGo-T-Relay6-S3-W5500_Original_Test/[T-Relay6-S3_V1.0][T-Relay6-S3_W5500_Original_Test]_firmware_V1.0.0.bin) |
 
 [1]: https://www.lilygo.cc/products/t-relay
 [2]: https://www.lilygo.cc/products/t-relay-5v-8-channel-relay

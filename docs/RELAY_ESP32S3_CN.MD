@@ -1,3 +1,12 @@
+<!--
+ * @Description: None
+ * @version: V1.0.0
+ * @Author: None
+ * @Date: 2024-05-29 14:38:46
+ * @LastEditors: LILYGO_L
+ * @LastEditTime: 2024-05-29 16:53:51
+ * @License: GPL 3.0
+-->
 
 
 
@@ -16,7 +25,8 @@ examples
 ├─RTC_DS3231_External_Module   # 使用 外部接入 DS3231 RTC模块
 ├─RTC_PCF8563_TimeSynchronization    # 使用板载 PCF8563 RTC 
 ├─TFT_eSPI                       #使用2.4'寸电阻触摸屏 
-└─UnitTestExample                #测试程序     
+├─UnitTestExample                #测试程序     
+└─T-Relay6-S3-W5500_Original_Test        #T-Relay6-S3外插W5500出厂测试程序     
 
 ```
 
@@ -84,9 +94,20 @@ examples
 | ---- | --- | --- | --- |
 | GPIO | 16  | 17  | 18  |
 
-## 4️⃣ 移位寄存器硬件分布:
+## 5️⃣ 移位寄存器硬件分布:
 
 | Relay Channel | CH1 | CH2 | CH3 | CH4 | CH5 | CH6 | CH7       | CH8     |
 | ------------- | --- | --- | --- | --- | --- | --- | --------- | ------- |
 | GPIO          | SR1 | SR2 | SR3 | SR4 | SR5 | SR6 | GREEN LED | RED LED |
+
+## 6️⃣ T-Relay6-S3-W5500 引脚:
+
+| T-Relay6-S3-W5500 引脚  | ESP32S3 引脚|
+| :------------------: | :------------------:|
+| SCLK         | IO9       |
+| MISO         | IO11       |
+| MOSI         | IO13       |
+| CS         | IO3       |
+| RST         | IO8       |
+| INT         | IO12       |
 
