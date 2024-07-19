@@ -1,10 +1,8 @@
 /*
- * @Description:
- * @version: V1.0.0
+ * @Description: HT74HC595 Usage Example
  * @Author: LILYGO_L
  * @Date: 2023-08-25 17:09:20
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-07-19 09:22:46
+ * @LastEditTime: 2024-07-19 09:49:40
  * @License: GPL 3.0
  */
 #include "ShiftRegister74HC595_NonTemplate.h"

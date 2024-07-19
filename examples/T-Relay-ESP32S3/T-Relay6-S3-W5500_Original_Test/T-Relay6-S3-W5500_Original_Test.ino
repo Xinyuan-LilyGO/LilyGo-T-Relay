@@ -1,11 +1,8 @@
 /*
- * @Description: T-Relay6出厂测试文件，安装好硬件后打开串口获取IP即可控制继电器
- *
- * @version: V1.0.0
+ * @Description: T-Relay6 factory test file, after installing the hardware, open the serial port to obtain the IP and control the relay
  * @Author: LILYGO_L
  * @Date: 2023-07-18 16:27:34
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-07-19 09:30:38
+ * @LastEditTime: 2024-07-19 09:50:25
  * @License: GPL 3.0
  */
 #include <SPI.h>
