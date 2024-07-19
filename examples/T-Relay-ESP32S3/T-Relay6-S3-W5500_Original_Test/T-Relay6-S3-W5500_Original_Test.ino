@@ -1,11 +1,11 @@
 /*
  * @Description: T-Relay6出厂测试文件，安装好硬件后打开串口获取IP即可控制继电器
- * 
+ *
  * @version: V1.0.0
  * @Author: LILYGO_L
  * @Date: 2023-07-18 16:27:34
- * @LastEditors: LILYGO_L
- * @LastEditTime: 2024-05-29 14:46:13
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-07-19 09:30:38
  * @License: GPL 3.0
  */
 #include <SPI.h>
@@ -63,8 +63,13 @@ void setup()
 {
     Serial.begin(115200);
 
+    pinMode(HT74HC595_OUT_EN, OUTPUT);
+    digitalWrite(HT74HC595_OUT_EN, HIGH); // 关闭输出数据 HT74HC595
+
     // Turn off all relays
+    digitalWrite(HT74HC595_OUT_EN, LOW);
     HT74HC595->setAllLow();
+    digitalWrite(HT74HC595_OUT_EN, HIGH);
 
     SPI.begin(W5500_SCLK, W5500_MISO, W5500_MOSI, W5500_CS);
     // SPI.setFrequency(80000000);
@@ -241,10 +246,14 @@ void loop()
                     switch (HTML_Relay1_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(0, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(0, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -257,10 +266,14 @@ void loop()
                     switch (HTML_Relay2_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(1, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(1, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -273,10 +286,14 @@ void loop()
                     switch (HTML_Relay3_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(2, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(2, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -289,10 +306,14 @@ void loop()
                     switch (HTML_Relay4_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(3, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(3, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -305,10 +326,14 @@ void loop()
                     switch (HTML_Relay1_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(4, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(4, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -321,10 +346,14 @@ void loop()
                     switch (HTML_Relay2_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(5, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(5, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -337,10 +366,14 @@ void loop()
                     switch (HTML_Relay3_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(6, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(6, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
@@ -353,10 +386,14 @@ void loop()
                     switch (HTML_Relay4_Flag)
                     {
                     case 0:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(7, LOW, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
                     case 1:
+                        digitalWrite(HT74HC595_OUT_EN, LOW);
                         HT74HC595->set(7, HIGH, true);
+                        digitalWrite(HT74HC595_OUT_EN, HIGH);
                         break;
 
                     default:
