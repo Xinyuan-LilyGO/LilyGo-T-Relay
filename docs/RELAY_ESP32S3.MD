@@ -4,7 +4,7 @@
  * @Author: None
  * @Date: 2024-05-29 14:38:46
  * @LastEditors: LILYGO_L
- * @LastEditTime: 2024-05-29 16:52:30
+ * @LastEditTime: 2024-07-19 09:57:19
  * @License: GPL 3.0
 -->
 <h1 align = "center">✨ LilyGO T-Relay S3  ✨</h1>
@@ -22,7 +22,8 @@ examples
 ├─RTC_DS3231_External_Module   # using DS3231 External RTC module
 ├─RTC_PCF8563_TimeSynchronization    # using On board PCF8563 RTC 
 ├─TFT_ESPI                     # using a 2.4 'inch resistive touch screen
-├─UnitTestExample              # Test program
+├─UnitTestExample              # Test programt
+├─HT74HC595                #HT74HC595 test program 
 └─T-Relay6-S3-W5500_Original_Test        #T-Replay6-S3 External W5500 Factory Test Procedure
 
 ````

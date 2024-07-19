@@ -26,6 +26,7 @@ examples
 ├─RTC_PCF8563_TimeSynchronization    # 使用板载 PCF8563 RTC 
 ├─TFT_eSPI                       #使用2.4'寸电阻触摸屏 
 ├─UnitTestExample                #测试程序     
+├─HT74HC595                #HT74HC595测试程序     
 └─T-Relay6-S3-W5500_Original_Test        #T-Relay6-S3外插W5500出厂测试程序     
 
 ```
