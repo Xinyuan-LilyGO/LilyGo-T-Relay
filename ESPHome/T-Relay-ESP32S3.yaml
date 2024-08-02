@@ -14,6 +14,11 @@ sn74hc595:
     latch_pin: 6
     sr_count: 1
 
+output:
+  - id: ch_en_pin
+    pin: 4  # enable 74ch595  
+    initial_state: low
+
 # Individual outputs
 switch:
   - platform: gpio
