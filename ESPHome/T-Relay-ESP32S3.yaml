@@ -1,5 +1,5 @@
 esphome:
-  name: LilyGo-T-RelayS3
+  name: lilygo_relay_s3
   friendly_name: relay
 
 esp32:
@@ -14,13 +14,15 @@ sn74hc595:
     latch_pin: 6
     sr_count: 1
 
-output:
-  - id: ch_en_pin
-    pin: 4  # enable 74ch595  
-    initial_state: low
-
 # Individual outputs
 switch:
+  - platform: gpio
+    id: ch_en
+    pin: 
+      number: GPIO4
+      inverted: true
+    restore_mode: ALWAYS_ON
+
   - platform: gpio
     # SN74HC595 Pin #0
     name: "Switch 1"
