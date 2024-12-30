@@ -1,6 +1,6 @@
 <h1 align = "center">🌟LILYGO T-RELAY🌟</h1>
 
-## **English | [中文](./README_CN.MD)**
+## **English | [中文](./RELAY_ESP32_CN.MD)**
 
 <h3 align = "left">Quick start:</h3>
 
