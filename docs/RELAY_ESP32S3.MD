@@ -9,7 +9,7 @@
 -->
 <h1 align = "center">✨ LilyGO T-Relay S3  ✨</h1>
 
-## **English | [中文](README_CN.MD)**
+## **English | [中文](RELAY_ESP32S3_CN.MD)**
 
 ## 1️⃣ Examples preview
 
