@@ -1,0 +1,51 @@
+esphome:
+  name: t-relay
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# wifi:
+#   ssid: "ssid"
+#   password: "password"
+
+#   # Enable fallback hotspot (captive portal) in case wifi connection fails
+#   ap:
+#     ssid: "T-Relay Fallback Hotspot"
+#     password: "g8TaLY13NVW6"
+
+ethernet:
+  type: W5500
+  clk_pin: GPIO22
+  mosi_pin: GPIO26
+  miso_pin: GPIO13
+  cs_pin: GPIO27
+  interrupt_pin: GPIO36
+  reset_pin: GPIO23
+
+switch:
+  - platform: gpio
+    pin: GPIO21
+    name: "Relay #1"
+    id: relay1
+
+  - platform: gpio
+    pin: GPIO19
+    name: "Relay #2"
+    id: relay2
+
+  - platform: gpio
+    pin: GPIO18
+    name: "Relay #3"
+    id: relay3
+
+  - platform: gpio
+    pin: GPIO5
+    name: "Relay #4"
+    id: relay4
+
+captive_portal:
