@@ -86,9 +86,9 @@ Please enter the upload mode manually.
 
 ## 4️⃣ ESP32S3 Pins:
 
-| Shift register | DATA | CLOCK | LATCH |
-| -------------- | ---- | ----- | ----- |
-| GPIO           | 7    | 5     | 6     |
+| Shift register | DATA | CLOCK | LATCH | nOE |
+| -------------- | ---- | ----- | ----- | --- |
+| GPIO           | 7    | 5     | 6     | 4   |
 
 | RTC  | SDA | SCL | IRQ |
 | ---- | --- | --- | --- |
