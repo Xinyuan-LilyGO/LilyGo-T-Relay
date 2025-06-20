@@ -1,0 +1,176 @@
+esphome:
+  name: lilygo-relays3
+  build_path: .esphome/build/lilygo-relays3
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+sn74hc595:
+  - id: "sn74hc595_hub"
+    data_pin: 7
+    clock_pin: 5
+    latch_pin: 6
+    oe_pin: 4
+    sr_count: 2  # By default, only one Chain is configured
+    
+switch:
+  - platform: gpio
+    name: "Switch 1"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 0
+      inverted: false
+      id: relay1
+
+  - platform: gpio
+    name: "Switch 2"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 1
+      inverted: false
+      id: relay2
+
+  - platform: gpio
+    name: "Switch 3"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 2
+      inverted: false
+      id: relay3
+
+  - platform: gpio
+    name: "Switch 4"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 3
+      inverted: false
+      id: relay4
+
+  - platform: gpio
+    name: "Switch 5"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 4
+      inverted: false
+      id: relay5
+
+  - platform: gpio
+    name: "Switch 6"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 5
+      inverted: false
+      id: relay6
+
+  - platform: gpio
+    name: "Switch 7"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 6
+      inverted: false
+      id: relay7
+
+  - platform: gpio
+    name: "Switch 8"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 7
+      inverted: false
+      id: relay8
+
+  - platform: gpio
+    name: "Switch 9"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 8
+      inverted: false
+      id: relay9
+
+  - platform: gpio
+    name: "Switch 10"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 9
+      inverted: false
+      id: relay10
+
+  - platform: gpio
+    name: "Switch 11"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 10
+      inverted: false
+      id: relay11
+
+  - platform: gpio
+    name: "Switch 12"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 11
+      inverted: false
+      id: relay12
+
+  - platform: gpio
+    name: "Switch 13"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 12
+      inverted: false
+      id: relay13
+
+  - platform: gpio
+    name: "Switch 14"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 13
+      inverted: false
+      id: relay14
+
+  - platform: gpio
+    name: "Switch 15"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 14
+      inverted: false
+      id: relay15
+
+  - platform: gpio
+    name: "Switch 15"
+    pin:
+      sn74hc595: sn74hc595_hub
+      number: 15
+      inverted: false
+      id: relay16
+
+      
+logger:
+  level: DEBUG
+  baud_rate: 115200
+  logs:
+    mqtt.component: DEBUG
+    mqtt.client: ERROR
+
+mqtt:
+  broker: mqtt server address
+  username: Your mqtt username
+  password:  Your mqtt password
+  port: 1883
+
+api:
+  encryption:
+    key: "E4AvftHULay+f6wwnKgHzsu7q7nzUdcrHp/Mjhyyjvk="
+
+# ota:
+  # password: "0204c885b8f04777ae94a8e51b4619c5"
+
+wifi:
+  ssid: "Your wifi ssid"
+  password: "Your wifi password"
+
+  ap:
+    ssid: "Relay Fallback Hotspot"
+    password: "fltzKdbsbDEn"
+
+captive_portal:
