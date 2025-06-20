@@ -6,9 +6,22 @@
  * @License: GPL 3.0
  */
 #include "ShiftRegister74HC595_NonTemplate.h"
-#include "pin_config.h"
 #include <iostream>
 #include <memory>
+
+// Ethernet
+#define W5500_SCLK 9
+#define W5500_MISO 11
+#define W5500_MOSI 13
+#define W5500_CS 3
+#define W5500_RST 8
+#define W5500_INT 12
+
+// HT74HC595
+#define HT74HC595_CLOCK 5
+#define HT74HC595_LATCH 6
+#define HT74HC595_DATA 7
+#define HT74HC595_OUT_EN 4
 
 std::shared_ptr<ShiftRegister74HC595_NonTemplate> HT74HC595 =
     std::make_shared<ShiftRegister74HC595_NonTemplate>(8, HT74HC595_DATA,
