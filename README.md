@@ -2,6 +2,7 @@
 
 ## 1️⃣ Quick Start:
 
+* T-Relay  Channel  (Basic ESP32S3) **[English](docs/RELAY_2_ESP32S3.MD)**
 * T-Relay 4 Channel (Basic ESP32) **[English](docs/RELAY_ESP32.md)/[中文](docs/RELAY_ESP32_CN.MD)**
 * T-Relay 8 Channel (Basic ESP32) **[English](docs/RELAY_ESP32.md)/[中文](docs/RELAY_ESP32_CN.MD)**
 * T-Relay S3 (Basic ESP32S3)      **[English](docs/RELAY_ESP32S3.MD)/[中文](docs/RELAY_ESP32S3_CN.MD)**

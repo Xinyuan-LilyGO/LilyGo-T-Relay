@@ -1,0 +1,40 @@
+esphome:
+  name: lilygo-relay2
+
+esp32:
+  board: adafruit_feather_esp32s3
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+wifi:
+  ssid: "wifi ssid"
+  password: "wifi password"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "T-Relay Fallback Hotspot"
+    password: "g8TaLY13NVW6"
+
+switch:
+  - platform: gpio
+    pin: GPIO35
+    name: "Relay #1"
+    id: relay1
+
+  - platform: gpio
+    pin: GPIO36
+    name: "Relay #2"
+    id: relay2
+
+
+# mqtt:
+  # broker: 192.168.xxxxx
+  # username: username
+  # password:  password
+  # port: 1883
+
+captive_portal:
+
