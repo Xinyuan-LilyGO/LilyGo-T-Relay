@@ -26,6 +26,7 @@ ethernet:
   cs_pin: GPIO27
   interrupt_pin: GPIO36
   reset_pin: GPIO23
+  clock_speed: 8MHz
 
 switch:
   - platform: gpio
